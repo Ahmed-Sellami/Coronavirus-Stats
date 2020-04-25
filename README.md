@@ -19,7 +19,7 @@ Coronavirus Stats is an Android application that provides you the latest stats a
 </table>
 
 ## About
-
+At first you need to allow location permission if you want to get all app features. Afterwards, your country stat will be at the first of the list as shown in screenshots. Also, you will get a notification every day at 11:59 delivering a summary about the latest stat in your country.
 
 ## Built with
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
