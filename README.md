@@ -37,7 +37,7 @@ Thanks to:
 <ol>
   <li><a href="https://rapidapi.com/Gramzivi/api/covid-19-data">COVID-19 data</a> for free api that provides updated statistic every 15 minutes.</li>
   <li><a href="https://github.com/backtrackbaba/covid-api">Covid API</a> for historical stats.</li>
-  <li><a href="https://dribbble.com/shots/10847147-Coronavirus-Covid-19-Dashboard">UI Inspiration</a> for neat and inspiring UI.</li>
+  <li><a href="https://dribbble.com/shots/10847147-Coronavirus-Covid-19-Dashboard">Coronavirus (Covid-19) Dashboard</a> for neat and inspiring UI.</li>
 </ol>
 
 ## Licence
