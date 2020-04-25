@@ -1,5 +1,5 @@
 # Coronavirus Stats
-Coronavirus Stats is an Android application that provides you the latest stats about Covid19.
+Coronavirus Stats is an Android application that provides you the latest stats about Covid19, featured with a summary notification about your country delivered at the end of the day.
 
 <p><b><i>Download from here: </i></b></p>
 
