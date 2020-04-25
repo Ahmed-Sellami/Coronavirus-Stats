@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#448FDA</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+    <color name="yellow">#FFCE00</color>
+    <color name="red">#C31F1F</color>
+    <color name="green">#2ECC71</color>
+    <color name="blue">#1976D2</color>
+
+    <color name="pomegranate">#F44336</color>
+
+    <color name="light_red">#FFCDD2</color>
+    <color name="light_green">#C8E6C9</color>
+    <color name="light_yellow">#FFECB3</color>
+
+</resources>

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.coronavirus_stats.ui.OverviewViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/spin_kit"
+                    style="@style/SpinKitView.Small.WanderingCubes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:SpinKit_Color="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/globe"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_globe"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/viga"
+                    android:text="@{viewModel.countryName}"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="32sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView9"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/viga"
+                    android:text="@{viewModel.countryFlag}"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="34sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                    app:layout_constraintEnd_toStartOf="@+id/textView8"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="83dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout5"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/virus"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_virus" />
+
+                    <TextView
+                        android:id="@+id/affected"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/ubuntu_bold"
+                        android:text="@{viewModel.totalAffected}"
+                        android:textColor="@color/yellow"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/virus"
+                        app:layout_constraintTop_toBottomOf="@+id/virus" />
+
+                    <ImageView
+                        android:id="@+id/new_affected"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginStart="4dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/virus"
+                        app:layout_constraintStart_toEndOf="@+id/new_affected_text"
+                        app:layout_constraintTop_toTopOf="@+id/virus"
+                        app:srcCompat="@drawable/ic_new_affected" />
+
+                    <TextView
+                        android:id="@+id/new_affected_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@color/light_yellow"
+                        android:text="@{viewModel.newAffected}"
+                        app:layout_constraintBottom_toBottomOf="@+id/new_affected"
+                        app:layout_constraintStart_toEndOf="@+id/virus"
+                        app:layout_constraintTop_toTopOf="@+id/new_affected" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="83dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/constraintLayout6"
+                    app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/deaths"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_dead_light" />
+
+                    <TextView
+                        android:id="@+id/deaths_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/ubuntu_bold"
+                        android:text="@{viewModel.totalDeaths}"
+                        android:textColor="@color/pomegranate"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/deaths"
+                        app:layout_constraintTop_toBottomOf="@+id/deaths" />
+
+                    <ImageView
+                        android:id="@+id/new_deaths"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginStart="4dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/deaths"
+                        app:layout_constraintStart_toEndOf="@+id/new_deaths_text"
+                        app:layout_constraintTop_toTopOf="@+id/deaths"
+                        app:srcCompat="@drawable/ic_new_deaths" />
+
+                    <TextView
+                        android:id="@+id/new_deaths_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/light_red"
+                        android:layout_marginStart="8dp"
+                        android:text="@{viewModel.newDeaths}"
+                        app:layout_constraintBottom_toBottomOf="@+id/new_deaths"
+                        app:layout_constraintStart_toEndOf="@+id/deaths"
+                        app:layout_constraintTop_toTopOf="@+id/new_deaths" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="83dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/constraintLayout5"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/recovered"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_heart" />
+
+                    <TextView
+                        android:id="@+id/recovered_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/ubuntu_bold"
+                        android:text="@{viewModel.totalRecovered}"
+                        android:textColor="@color/green"
+                        android:textSize="24sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/recovered"
+                        app:layout_constraintTop_toBottomOf="@+id/recovered" />
+
+                    <ImageView
+                        android:id="@+id/new_recovered"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginStart="4dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/recovered"
+                        app:layout_constraintStart_toEndOf="@+id/new_recovered_text"
+                        app:layout_constraintTop_toTopOf="@+id/recovered"
+                        app:srcCompat="@drawable/ic_new_recovered" />
+
+                    <TextView
+                        android:id="@+id/new_recovered_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/light_green"
+                        android:layout_marginStart="8dp"
+                        android:text="@{viewModel.newRecovered}"
+                        app:layout_constraintBottom_toBottomOf="@+id/new_recovered"
+                        app:layout_constraintStart_toEndOf="@+id/recovered"
+                        app:layout_constraintTop_toTopOf="@+id/new_recovered" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="180dp"
+                android:background="@drawable/stats_bg">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="12dp"
+                    app:layout_constraintBottom_toTopOf="@+id/searchView"
+                    app:layout_constraintTop_toBottomOf="@+id/view_pager"
+                    app:tabBackground="@drawable/tab_item_selector"
+                    app:tabGravity="center"
+                    app:tabIndicator="@null"
+                    app:tabRippleColor="@null"
+                    app:tabSelectedTextColor="?colorPrimary"
+                    app:tabTextAppearance="@style/TabItemText" />
+
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="220dp"
+                    android:layout_height="32dp"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="130dp"
+                    android:layout_height="32dp"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/searchView" />
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="216dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1"
+                    tools:listitem="@layout/list_item"/>
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/spin_kit1"
+                    style="@style/SpinKitView.Small.WanderingCubes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:SpinKit_Color="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/recycler_view" />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </FrameLayout>
+    </ScrollView>
+</layout>

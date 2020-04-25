@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Coronavirus Stats</string>
+
+    <string name="active_cases">Active Cases</string>
+    <string name="overall">Overall</string>
+
+    <string name="no_item">No item</string>
+
+    <string name="by_affected">Affected</string>
+    <string name="by_deaths">Deaths</string>
+    <string name="by_recovered">Recovered</string>
+
+    <string name="summary_channel_id">summary_channel</string>
+    <string name="summary_channel_name">Summary</string>
+    <string name="notification_title">Today\'s summary in your country</string>
+    <string name="affected">Affected</string>
+    <string name="active">Active</string>
+    <string name="home_emoji">🇩🇪</string>
+</resources>
