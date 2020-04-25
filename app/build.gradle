@@ -66,9 +66,6 @@ dependencies {
     // Google Location API
     implementation 'com.google.android.gms:play-services-location:17.0.0'
 
-    // WorkManager
-    implementation "androidx.work:work-runtime-ktx:2.3.4"
-
     // ViewPager2
     implementation "com.google.android.material:material:1.2.0-alpha06"
     implementation "androidx.viewpager2:viewpager2:1.1.0-alpha01"
