@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.MarginLayoutParams
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SearchView
@@ -45,8 +44,8 @@ class OverviewFragment : Fragment(){
             ViewModelProvider(this)[OverviewViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
 
-        // Allow Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.lifecycleOwner = this
+        // Allow Data Binding to Observe LiveData with the lifecycle of this Fragment's view
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.viewModel = viewModel
 
@@ -165,7 +164,7 @@ class OverviewFragment : Fragment(){
         var selected : SortEnum
 
         binding.spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
                 selected = when(pos){
                     1 -> SortEnum.DEATHS
                     2 -> SortEnum.RECOVERED
@@ -198,7 +197,7 @@ class OverviewFragment : Fragment(){
 
         for (i in 0 until binding.tabLayout.tabCount) {
             val tab = (binding.tabLayout.getChildAt(0) as ViewGroup).getChildAt(i)
-            val p = tab.layoutParams as MarginLayoutParams
+            val p = tab.layoutParams as ViewGroup.MarginLayoutParams
             p.setMargins(20, 0, 20, 0)
             tab.requestLayout()
         }
