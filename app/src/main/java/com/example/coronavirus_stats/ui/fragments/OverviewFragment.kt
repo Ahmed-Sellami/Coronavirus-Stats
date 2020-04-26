@@ -67,7 +67,6 @@ class OverviewFragment : Fragment(){
     }
 
 
-
     private fun setupRecyclerView(){
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
