@@ -1,5 +1,5 @@
 # Coronavirus Stats
-Coronavirus Stats is an Android application that provides you the latest stats about Covid19.
+Coronavirus Stats is an Android application that provides you the latest stats about Covid19, featured with a summary notification about your country delivered at the end of the day.
 
 <p><b><i>Download from here: </i></b></p>
 
@@ -19,7 +19,7 @@ Coronavirus Stats is an Android application that provides you the latest stats a
 </table>
 
 ## About
-
+At first you need to allow location permission if you want to get all app features. Afterwards, your country stat will be at the first of the list as shown in screenshots. Also, you will get a notification every day at 11:59 delivering a summary about the latest stat in your country.
 
 ## Built with
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
@@ -37,7 +37,7 @@ Thanks to:
 <ol>
   <li><a href="https://rapidapi.com/Gramzivi/api/covid-19-data">COVID-19 data</a> for free api that provides updated statistic every 15 minutes.</li>
   <li><a href="https://github.com/backtrackbaba/covid-api">Covid API</a> for historical stats.</li>
-  <li><a href="https://dribbble.com/shots/10847147-Coronavirus-Covid-19-Dashboard">UI Inspiration</a> for neat and inspiring UI.</li>
+  <li><a href="https://dribbble.com/shots/10847147-Coronavirus-Covid-19-Dashboard">Coronavirus (Covid-19) Dashboard</a> for neat and inspiring UI.</li>
 </ol>
 
 ## Licence
