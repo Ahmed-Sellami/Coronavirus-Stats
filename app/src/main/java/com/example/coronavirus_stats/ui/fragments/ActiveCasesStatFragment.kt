@@ -23,7 +23,7 @@ class ActiveCasesStatFragment : Fragment() {
             ViewModelProvider(this)[OverviewViewModel::class.java]
         } ?: throw Exception("Invalid Activity")
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.viewModel = viewModel
 

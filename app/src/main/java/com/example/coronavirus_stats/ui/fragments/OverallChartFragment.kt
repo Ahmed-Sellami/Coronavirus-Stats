@@ -27,7 +27,7 @@ class OverallChartFragment : Fragment() {
 
         val binding = OverallChartFragmentBinding.inflate(inflater)
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.viewModel = activity?.run {
             ViewModelProvider(this)[OverviewViewModel::class.java]
