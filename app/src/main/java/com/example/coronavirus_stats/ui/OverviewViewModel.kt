@@ -248,6 +248,10 @@ class OverviewViewModel : ViewModel() {
                         "Problem with $country | Error: " + e.message
                     )
                     continue
+                } finally {
+                    // The free subscription to the api service requires you
+                    // to make one single request every second.
+                    delay(1050)
                 }
             }
 

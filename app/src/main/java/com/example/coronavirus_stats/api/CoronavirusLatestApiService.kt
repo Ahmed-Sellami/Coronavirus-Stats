@@ -9,7 +9,7 @@ import retrofit2.http.Headers
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://covid-19-data.p.rapidapi.com/"
-private const val API_KEY = "4fd376faafmshbaca59561da53efp1a094bjsn9fcc82e78f20"
+private const val API_KEY = "c64032eeafmsh14b4af700711ddcp1a88afjsn5bcc4454a330"
 
 interface CoronavirusMonitorApiService {
 
