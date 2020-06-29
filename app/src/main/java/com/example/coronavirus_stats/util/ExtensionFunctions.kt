@@ -86,3 +86,14 @@ fun LineDataSet.customizeDataSet(entries: ArrayList<Entry>, chart: LineChart): L
     }
     return this
 }
+
+fun Double?.plusToNullable(number: Double?): Double {
+    val a = this ?: 0.0
+    val b = number ?: 0.0
+    return a + b
+}
+
+fun Double?.minusToNullable(double: Double): Double {
+    val a = this ?: 0.0
+    return a - double
+}

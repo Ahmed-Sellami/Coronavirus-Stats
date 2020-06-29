@@ -92,6 +92,7 @@ class OverviewViewModel : ViewModel() {
         )
 
 
+
     init {
         viewModelScope.launch {
             getCountryHistoryStat(null)
@@ -99,15 +100,15 @@ class OverviewViewModel : ViewModel() {
         }
     }
 
-    fun getCountryHistoryStat(countryCurrentStat: CountryCurrentStat?) {
-        val countryHistoryStatDelegate = mutableListOf<CountryStatHistoryPerDay?>()
-        val countryHistoryAffectedDelegate = mutableListOf<Double?>()
-        val countryHistoryActiveCasesDelegate = mutableListOf<Double?>()
-        var todayAffected: Double
-        var todayDeaths: Double
-        var todayRecovered: Double
+    suspend fun getCountryHistoryStat(countryCurrentStat: CountryCurrentStat?) =
+        withContext(Dispatchers.Main) {
+            val countryHistoryStatDelegate = mutableListOf<CountryStatHistoryPerDay?>()
+            val countryHistoryAffectedDelegate = mutableListOf<Double?>()
+            val countryHistoryActiveCasesDelegate = mutableListOf<Double?>()
+            val todayAffected: Double
+            val todayDeaths: Double
+            val todayRecovered: Double
 
-        coroutineScope.launch {
             var countryCurrentStatRef: CountryCurrentStat?
             if (isGlobal) {
                 try {
@@ -223,41 +224,40 @@ class OverviewViewModel : ViewModel() {
             _countryHistoryActiveCases.value = countryHistoryActiveCasesDelegate
             _countryHistoryStat.value = countryHistoryStatDelegate
         }
-    }
 
-    private fun getCurrentStatForEachCountry() {
-        coroutineScope.launch {
 
-            val countriesStats = mutableListOf<CountryCurrentStat?>()
-            for (country in countriesISO.keys) {
-                try {
-                    val countryName = when (country) {
-                        "United States" -> "USA"
-                        else -> country
-                    }
+    private suspend fun getCurrentStatForEachCountry() = withContext(Dispatchers.Main) {
 
-                    val countryStat =
-                        CoronavirusMonitorApi.retrofitService.getCountryStat(countryName).await()
-                    countriesStats.add(countryStat[0])
-                    countriesStats.sortByDescending { it?.confirmed }
-                    _countriesCurrentStat.value = countriesStats
-
-                } catch (e: Exception) {
-                    Log.i(
-                        "OverviewViewModel",
-                        "Problem with $country | Error: " + e.message
-                    )
-                    continue
-                } finally {
-                    // The free subscription to the api service requires you
-                    // to make one single request every second.
-                    delay(1050)
+        val countriesStats = mutableListOf<CountryCurrentStat?>()
+        for (country in countriesISO.keys) {
+            try {
+                val countryName = when (country) {
+                    "United States" -> "USA"
+                    else -> country
                 }
-            }
 
-            _isListReady.value = true
+                val countryStat =
+                    CoronavirusMonitorApi.retrofitService.getCountryStat(countryName).await()
+                countriesStats.add(countryStat[0])
+                countriesStats.sortByDescending { it?.confirmed }
+                _countriesCurrentStat.value = countriesStats
+
+            } catch (e: Exception) {
+                Log.i(
+                    "OverviewViewModel",
+                    "Problem with $country | Error: " + e.message
+                )
+                continue
+            } finally {
+                // The free subscription to the api service requires you
+                // to make one single request every second.
+                delay(1200)
+            }
         }
+
+        _isListReady.value = true
     }
+
 
     private fun notifyHeaderValues(
         totalCases: String?,

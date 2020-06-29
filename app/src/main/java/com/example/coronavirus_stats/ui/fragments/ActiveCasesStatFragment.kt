@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.coronavirus_stats.databinding.ActiveCasesStatFragmentBinding
 import com.example.coronavirus_stats.ui.OverviewViewModel
+import com.example.coronavirus_stats.util.minusToNullable
+import com.example.coronavirus_stats.util.plusToNullable
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Description
 
@@ -35,7 +37,8 @@ class ActiveCasesStatFragment : Fragment() {
             binding.spinKit1.visibility = View.GONE
 
             val countryCurrentStat = viewModel.countryCurrentStat.value
-            val activeCases = it[0]!!
+
+            val activeCases = countryCurrentStat?.confirmed.minusToNullable(countryCurrentStat?.deaths.plusToNullable(countryCurrentStat?.recovered))
             val totalCases = countryCurrentStat?.confirmed ?: 0.0
 
             binding.circularProgress.setProgress(activeCases / totalCases * 100.0, 100.0)
@@ -57,4 +60,7 @@ class ActiveCasesStatFragment : Fragment() {
 
         chart.setTouchEnabled(false)
     }
+
 }
+
+

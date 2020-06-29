@@ -21,6 +21,7 @@ import com.example.coronavirus_stats.util.SharedVariables.country
 import com.example.coronavirus_stats.util.SortEnum
 import com.example.coronavirus_stats.util.hideKeyboard
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.*
 
 
 class OverviewFragment : Fragment(){
@@ -34,6 +35,9 @@ class OverviewFragment : Fragment(){
 
     private var adapterOriginalList = mutableListOf<CountryCurrentStat?>()
 
+    private val coroutineScope = CoroutineScope(
+        Job() + Dispatchers.Main
+    )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -81,7 +85,9 @@ class OverviewFragment : Fragment(){
                 CountryStatAdapter(
                     { binding.recyclerView.layoutManager?.scrollToPosition(0) },
                     CountryCurrentStatListener { innerItem ->
-                        viewModel.getCountryHistoryStat(innerItem)
+                        coroutineScope.launch {
+                            viewModel.getCountryHistoryStat(innerItem)
+                        }
                         viewModel.isGlobal = false
                         binding.globe.visibility = View.VISIBLE
                         context.hideKeyboard(this)
@@ -145,7 +151,9 @@ class OverviewFragment : Fragment(){
         binding.globe.setOnClickListener {
             it.visibility = View.GONE
             viewModel.isGlobal = true
-            viewModel.getCountryHistoryStat(null)
+            coroutineScope.launch {
+                viewModel.getCountryHistoryStat(null)
+            }
             binding.spinKit.visibility = View.VISIBLE
         }
     }
